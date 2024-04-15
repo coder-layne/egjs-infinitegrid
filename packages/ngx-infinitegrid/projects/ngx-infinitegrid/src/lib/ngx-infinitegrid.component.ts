@@ -70,6 +70,7 @@ export class NgxInfiniteGridComponent
   @Input() autoResize!: NgxInfiniteGridProps['autoResize'];
   @Input() useFit!: NgxInfiniteGridProps['useFit'];
   @Input() useTransform!: NgxInfiniteGridProps['useTransform'];
+  @Input() remRootValueGetter!: NgxInfiniteGridProps['remRootValueGetter'];
   @Input() renderOnPropertyChange!: NgxInfiniteGridProps['renderOnPropertyChange'];
   @Input() preserveUIOnDestroy!: NgxInfiniteGridProps['preserveUIOnDestroy'];
   @Input() defaultDirection!: NgxInfiniteGridProps['defaultDirection'];
