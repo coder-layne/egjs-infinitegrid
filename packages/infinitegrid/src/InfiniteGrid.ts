@@ -90,6 +90,7 @@ class InfiniteGrid<Options extends InfiniteGridOptions = InfiniteGridOptions> ex
     renderer: null,
     threshold: 100,
     useRecycle: true,
+    disableRecycleWhenResize: false,
     scrollContainer: null,
     appliedItemChecker: (() => false) as (item: InfiniteGridItem, grid: Grid) => boolean,
   } as Required<InfiniteGridOptions>;
@@ -123,6 +124,7 @@ class InfiniteGrid<Options extends InfiniteGridOptions = InfiniteGridOptions> ex
       useRecycle,
       scrollContainer,
       appliedItemChecker,
+      disableRecycleWhenResize,
       ...gridOptions
     } = this.options;
     // options.container === false, wrapper = container, scrollContainer = document.body
@@ -778,6 +780,10 @@ class InfiniteGrid<Options extends InfiniteGridOptions = InfiniteGridOptions> ex
 
   private _onResize = (e: ResizeWatcherResizeEvent) => {
     if (e.isResizeContainer) {
+      if (this.infinite.options.useRecycle && this.options.disableRecycleWhenResize) {
+        const groups = this.groupManager.getGroups();
+        this.setCursors(0, groups.length);
+      }
       this._renderItems({ useResize: true }, true);
     } else {
       const updatedItems = getUpdatedItems(this.getVisibleItems(), e.childEntries) as InfiniteGridItem[];

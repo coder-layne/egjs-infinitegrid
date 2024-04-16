@@ -81,6 +81,12 @@ export interface InfiniteGridOptions extends GridOptions {
    */
   useRecycle?: boolean;
   /**
+   * Whether to display all DOMs when contentSize of container recalculate triggered by resize.
+   * @ko 보이는 영역의 DOM만 보여줄지 여부.
+   * @default false
+   */
+  disableRecycleWhenResize?: boolean;
+  /**
    * You can set the scrollContainer directly. In this case, the container becomes the wrapper itself.
    * @ko scrollContainer를 직접 정할 수 있다. 이 경우 container는 wrapper 자기 자신이 된다.
    */
